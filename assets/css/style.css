@@ -1,9 +1,37 @@
 * {
     box-sizing: border-box;
-  }
+}
 
-  header {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px;
-  }
+body {
+    border: 2px solid black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 700px;
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+main {
+    display: flex;
+    border: 2px solid blue;
+    justify-content: center;
+    text-align: center;
+    margin: 50px;
+    height: 500px;
+    /* width: auto; */
+}
+
+article {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    flex-basis: 75%;
+
+}
