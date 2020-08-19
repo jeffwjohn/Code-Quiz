@@ -1,9 +1,19 @@
 var startButton = document.querySelector("#start");
 var choiceButton = document.querySelector(".button")
 var quizObj = {
-    question: "The condition in an if/else statement is enclosed with ____.</h2>",
-    choices: []
+    
 }
+var question1 =  "The condition in an if/else statement is enclosed with ____.</h2>";
+var choices1= ["quotes", "curly brackets", "parentheses", "square brackets"]
+var question2 = "Commonly used data types DO NOT include:";
+var choices2 = ["strings", "booleans", "alerts", "numbers"];
+var question3 = "A very useful tool used during development and debugging for printing content to the debugger is:";
+var choices3 = ["JavaScript", "Terminal/Bash", "for loops", "console.log"];
+var question4 = "String values must be enclodsed within __________ when being assigned to variables.";
+var choices4 = ["commas", "curly brackets", "quotes", "parentheses"];
+var question5 = "Arrays in JavaScript can be used to store __________";
+var choices5 = ["numbers and strings", "other arrays", "booleans", "all of the above"];
+
 
 
 
