@@ -60,8 +60,6 @@ var createCard = function () {
 
     mainEl.appendChild(questionEl);
 
-    console.log(mainEl);
-    // console.log(choice1El)
     // // choiceButton.onclick = function () {
     // //     alert("you clicked a choice");
     // };
@@ -72,11 +70,21 @@ var createCard = function () {
 
 var checkAnswer = function (e) {
     if (e.target.classList.contains('choice-btn') && e.target.classList.contains('correct')) {
-        alert("CORRECT!");
+        var rightEl = document.createElement("div");
+        rightEl.textContent = "Right!";
+        rightEl.className = "verify";
+        mainEl.appendChild(rightEl);
+        console.log("RIGHT!");
+
     } else if (e.target.id === 'start') {
-        alert("QUIZ BEGINS!");
+        console.log("QUIZ BEGINS!");
+
     } else {
-        alert("INCORRECT!");
+        var wrongEl = document.createElement("div");
+        wrongEl.textContent = "Wrong!";
+        wrongEl.className = "verify";
+        mainEl.appendChild(wrongEl);
+        console.log("WRONG!");
     }
 };
 

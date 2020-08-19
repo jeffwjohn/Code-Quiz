@@ -29,16 +29,17 @@ header {
 
 main {
     display: flex;
-    border: 2px solid darkslateblue;
+    flex-flow: column; 
+    /* border: 2px solid darkslateblue; */
     justify-content: center;
     text-align: center;
     margin: 50px;
     height: 500px;
-    /* width: auto; */
+    
 }
 
 article {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -92,3 +93,14 @@ article h1, h2 {
     width: auto;
 }
 
+.verify {
+    color: grey;
+    font-style: italic;
+    font-family: 'Roboto-light', sans-serif;
+    font-size: 1.2rem;
+    text-align: left;
+    margin: 20px 0;
+    padding: 10px;
+    border-top: 1px solid grey;
+    
+}
