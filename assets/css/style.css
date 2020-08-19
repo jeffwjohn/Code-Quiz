@@ -2,10 +2,22 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: Roboto-Bold;
+    src: url(assets/css/Roboto/Roboto-Bold.ttf);
+    
+}
+
+@font-face {
+    font-family: Roboto-light;
+    src: url(Roboto/Roboto-light.ttf);
+}
+
 body {
     border: 2px solid black;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Roboto-Bold', sans-serif;
     height: 700px;
+    
 
 }
 
@@ -17,7 +29,7 @@ header {
 
 main {
     display: flex;
-    border: 2px solid blue;
+    border: 2px solid darkslateblue;
     justify-content: center;
     text-align: center;
     margin: 50px;
@@ -31,7 +43,52 @@ article {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50%;
-    flex-basis: 75%;
+    flex-basis: 70%;
+    height: auto;
+    width: auto;
 
 }
+
+article h1, h2 {
+    margin: 40px 0;
+    /* width: 100%; */
+    line-height: 1.4;  
+    font-size: 2rem;  
+}
+
+.main-text {
+    margin: 0 35px 40px 35px;
+}
+
+.question {
+    display: flex;
+    height: auto;
+    width: auto;
+    align-items: flex-start;
+    text-align: left;
+    
+}
+
+.button {
+    outline: none;
+    border: none;
+    display: inline-block;
+    position: relative;
+    padding: 10px 15px;
+    color: white;
+    background: darkslateblue;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    width: 30%;
+    text-align: left;
+    margin: 5px 0;
+    font-family: 'Roboto-light', sans-serif;
+    /* box-shadow: 1px 1px grey; */
+    
+}
+
+#start {
+    text-align: center;
+    width: auto;
+}
+
