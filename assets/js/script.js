@@ -1,7 +1,7 @@
 var mainEl = document.querySelector("#main");
 var startCard = document.querySelector("#startCard");
 var startButton = document.querySelector("#start");
-var choiceButton = document.querySelectorAll(".choice-btn");
+//var choiceButton = document.querySelectorAll(".choice-btn");
 var buttons = document.getElementsByTagName("button");
 // var quizObj = {
 //     question: "",
@@ -17,8 +17,6 @@ var question4 = "String values must be enclodsed within __________ when being as
 var choices4 = ["commas", "curly brackets", "quotes", "parentheses"];
 var question5 = "Arrays in JavaScript can be used to store __________";
 var choices5 = ["numbers and strings", "other arrays", "booleans", "all of the above"];
-
-
 
 
 var startQuiz = function (event) {
@@ -47,7 +45,7 @@ var createCard = function () {
     var choice3El = document.createElement("button");
     choice3El.textContent = "3. parentheses";
     choice3El.id = "choice3";
-    choice3El.className = "button choice-btn";
+    choice3El.className = "button choice-btn correct";
     choice3El.name = "correct";
     var choice4El = document.createElement("button");
     choice4El.textContent = "4. square brackets";
@@ -59,7 +57,7 @@ var createCard = function () {
     questionEl.appendChild(choice3El);
     questionEl.appendChild(choice4El);
 
-    
+
     mainEl.appendChild(questionEl);
 
     console.log(mainEl);
@@ -72,7 +70,7 @@ var createCard = function () {
 //     alert("you clicked a choice");
 // };
 var checkAnswer = function () {
-    
+
 };
 
 var gameOver = function () {
@@ -88,12 +86,17 @@ var highScore = function () {
 
 startButton.addEventListener("click", startQuiz);
 
-document.querySelector("#main").addEventListener('click', function(e) {
-    if (e.target.classList.contains('choice-btn')) {
-        alert('clicked');
-    }
-})
-// choiceButton.addEventListener("click", checkAnswer);
-// pageContentEl.addEventListener("click", taskButtonHandler);
+document.querySelector("#main").addEventListener('click', function (e) {
+            if (e.target.classList.contains('choice-btn') && e.target.classList.contains('correct')) {
+                alert("CORRECT!");
+            } else if (e.target.id === 'start') {
+                alert("QUIZ BEGINS!");
+            } else {
+                alert("INCORRECT!");
+            }
+        })
 
-//startQuiz(e)
+        // choiceButton.addEventListener("click", checkAnswer);
+        // pageContentEl.addEventListener("click", taskButtonHandler);
+
+        //startQuiz(e)
