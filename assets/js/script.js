@@ -69,8 +69,15 @@ var createCard = function () {
 // choiceButton.onclick = function () {
 //     alert("you clicked a choice");
 // };
-var checkAnswer = function () {
 
+var checkAnswer = function (e) {
+    if (e.target.classList.contains('choice-btn') && e.target.classList.contains('correct')) {
+        alert("CORRECT!");
+    } else if (e.target.id === 'start') {
+        alert("QUIZ BEGINS!");
+    } else {
+        alert("INCORRECT!");
+    }
 };
 
 var gameOver = function () {
@@ -81,22 +88,11 @@ var highScore = function () {
 
 };
 
-
-
-
 startButton.addEventListener("click", startQuiz);
 
-document.querySelector("#main").addEventListener('click', function (e) {
-            if (e.target.classList.contains('choice-btn') && e.target.classList.contains('correct')) {
-                alert("CORRECT!");
-            } else if (e.target.id === 'start') {
-                alert("QUIZ BEGINS!");
-            } else {
-                alert("INCORRECT!");
-            }
-        })
+document.querySelector("#main").addEventListener('click', checkAnswer);
 
-        // choiceButton.addEventListener("click", checkAnswer);
-        // pageContentEl.addEventListener("click", taskButtonHandler);
+// choiceButton.addEventListener("click", checkAnswer);
+// pageContentEl.addEventListener("click", taskButtonHandler);
 
-        //startQuiz(e)
+//startQuiz(e)
