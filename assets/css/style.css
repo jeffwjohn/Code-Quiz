@@ -5,7 +5,7 @@
 @font-face {
     font-family: Roboto-Bold;
     src: url(Roboto/Roboto-Bold.ttf);
-    
+
 }
 
 @font-face {
@@ -17,7 +17,7 @@ body {
     border: 2px solid black;
     font-family: 'Roboto-Bold', sans-serif;
     height: 700px;
-    
+
 
 }
 
@@ -29,14 +29,14 @@ header {
 
 main {
     display: flex;
-    flex-flow: column; 
+    flex-flow: column;
     /* border: 2px solid darkslateblue; */
     justify-content: center;
     text-align: center;
     margin: 50px 50px 50px 50px;
     /* padding-bottom: 50px; */
     height: 500px;
-    
+
 }
 
 article {
@@ -52,11 +52,11 @@ article {
 
 }
 
-article p {
+article p, label {
     font-family: 'Roboto-light', sans-serif;
     margin: 40px 0;
-    line-height: 1.4;  
-    font-size: 1.2rem;  
+    line-height: 1.4;
+    font-size: 1.2rem;
 }
 
 .main-text {
@@ -69,7 +69,7 @@ article p {
     width: auto;
     align-items: flex-start;
     text-align: left;
-    
+
 }
 
 .button {
@@ -87,21 +87,43 @@ article p {
     margin: 5px 0;
     font-family: 'Roboto-light', sans-serif;
     /* box-shadow: 1px 1px grey; */
-    
+
+
 }
 
-#start:hover, #btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
+.button:hover {
     cursor: pointer;
-    background-color: skyblue;
+    background-color: magenta;
 }
- 
+
 /* #btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
     outline: 0;
 } */
 
-#start {
+#start,
+#submit {
     text-align: center;
     width: auto;
+}
+
+.score-card {
+    border: 1px solid red;
+    display: flex;
+    align-items: flex-start;
+    padding: 0 0 20px 20px;
+   
+}
+
+.score-card h3 {
+    margin: 0;
+}
+
+.score-card p {
+    margin: 10px 0 0 0;
+}
+
+label {
+    font-family: 'Roboto-light', sans-serif;
 }
 
 /* #next {
@@ -117,5 +139,5 @@ article p {
     margin: 20px 0;
     padding: 10px;
     border-top: 1px solid grey;
-    
+
 }

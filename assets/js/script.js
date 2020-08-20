@@ -247,7 +247,8 @@ var gameOver = function () {
     scoreCard.className = "score-card";
     mainEl.appendChild(scoreCard);
     var gameOverHTML = "<h3>All done!</h3>";
-    gameOverHTML += "<p id='score'> Your final score is " + quiz.score + "</p>";
+    gameOverHTML += "<p id='score'> Your final score is " + quiz.score + "</p>"
+    gameOverHTML += "<form><label for='initials'>Enter initials: </label><input type='text' id='initials' name='initials'><br><input type='submit' id='submit' class='button' value='Submit'></form>"
     scoreCard.innerHTML = gameOverHTML;
 };
 
