@@ -88,9 +88,22 @@ article h1, h2 {
     
 }
 
+#btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
+    cursor: pointer;
+    background-color: #01BBFF;
+}
+ 
+#btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
+    outline: 0;
+}
+
 #start {
     text-align: center;
     width: auto;
+}
+
+#next {
+    text-align: ;
 }
 
 .verify {
