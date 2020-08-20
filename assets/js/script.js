@@ -221,26 +221,13 @@ function showProgress() {
     element.innerHTML = "Question " + currentQuestionNumber + " of " + quiz.questions.length;
 };
 
-// function wipeCard() {
-//         mainEl.removeChild("button");
-//         mainEl.removeChild("span");
-//     }
-
-
-
-// function showScores() {
-//     var gameOverHTML = "<h1>Result</h1>";
-//     gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
-//     var element = document.getElementById("quiz");
-//     element.innerHTML = gameOverHTML;
-// };
-
 var gameOver = function () {
     var scoreCard = document.createElement("article");
     scoreCard.id = "score-card-id";
+    scoreCard.className = "score-card";
     mainEl.appendChild(scoreCard);
-    var gameOverHTML = "<h1>All done!</h1>";
-    gameOverHTML += "<h2 id='score'> Your final score is " + quiz.score + "</h2>";
+    var gameOverHTML = "<h3>All done!</h3>";
+    gameOverHTML += "<p id='score'> Your final score is " + quiz.score + "</p>";
     scoreCard.innerHTML = gameOverHTML;
      };
 

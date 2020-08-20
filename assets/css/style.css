@@ -33,7 +33,8 @@ main {
     /* border: 2px solid darkslateblue; */
     justify-content: center;
     text-align: center;
-    margin: 50px;
+    margin: 50px 50px 50px 50px;
+    /* padding-bottom: 50px; */
     height: 500px;
     
 }
@@ -45,16 +46,17 @@ article {
     justify-content: center;
     align-items: center;
     flex-basis: 70%;
-    height: auto;
+    height: 100px;
     width: auto;
+    font-size: 2rem;
 
 }
 
-article h1, h2 {
+article p {
+    font-family: 'Roboto-light', sans-serif;
     margin: 40px 0;
-    /* width: 100%; */
     line-height: 1.4;  
-    font-size: 2rem;  
+    font-size: 1.2rem;  
 }
 
 .main-text {
@@ -63,7 +65,7 @@ article h1, h2 {
 
 .question {
     display: flex;
-    height: auto;
+    height: 100px;
     width: auto;
     align-items: flex-start;
     text-align: left;
@@ -73,7 +75,7 @@ article h1, h2 {
 .button {
     outline: none;
     border: none;
-    display: inline-block;
+    display: flex;
     position: relative;
     padding: 10px 15px;
     color: white;
@@ -88,14 +90,14 @@ article h1, h2 {
     
 }
 
-#btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
+#start:hover, #btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
     cursor: pointer;
-    background-color: #01BBFF;
+    background-color: skyblue;
 }
  
-#btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
+/* #btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
     outline: 0;
-}
+} */
 
 #start {
     text-align: center;
