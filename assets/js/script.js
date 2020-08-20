@@ -3,6 +3,38 @@ var startCard = document.querySelector("#startCard");
 var questionCard = document.querySelector(".question");
 var choiceButton = document.querySelector(".choice-btn");
 var startButton = document.querySelector("#start");
+// var now = new Date().getTime();
+
+function startTimer () {
+var timeLimit = new Date().getTime() + 60000;
+// Set the date we're counting down to
+var countDownDate = new Date(timeLimit).getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function () {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    // var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    // var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="timer"
+    document.getElementById("timer").innerHTML = "Time: " + seconds + "s ";
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "TIME UP!";
+    }
+}, 1000);
+}
 // //var choiceButton = document.querySelectorAll(".choice-btn");
 // var buttons = document.getElementsByTagName("button");
 // var quizObj = {
@@ -110,6 +142,7 @@ var startQuiz = function (event) {
     startCard.remove();
     // createCard()
     populate()
+    startTimer()
 };
 
 // // CREATE QUESTION CARD
@@ -141,7 +174,7 @@ Quiz.prototype.guess = function (answer) {
     if (this.getQuestionIndex().isCorrectAnswer(answer)) {
         this.score++;
     }
-
+    
     this.questionIndex++;
 }
 
@@ -192,7 +225,7 @@ function populate() {
         }
 
         showProgress();
-        
+
     }
 };
 
@@ -229,7 +262,7 @@ var gameOver = function () {
     var gameOverHTML = "<h3>All done!</h3>";
     gameOverHTML += "<p id='score'> Your final score is " + quiz.score + "</p>";
     scoreCard.innerHTML = gameOverHTML;
-     };
+};
 
 // create questions here
 var questions = [
@@ -246,4 +279,3 @@ var quiz = new Quiz(questions);
 // display quiz
 startButton.addEventListener("click", startQuiz);
 //populate();
-
