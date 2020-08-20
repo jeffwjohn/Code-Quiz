@@ -3,6 +3,7 @@ var startCard = document.querySelector("#startCard");
 var questionCard = document.querySelector(".question");
 var choiceButton = document.querySelector(".choice-btn");
 var startButton = document.querySelector("#start");
+var seconds = 60;
 // var now = new Date().getTime();
 
 function startTimer() {
@@ -13,32 +14,35 @@ function startTimer() {
     // Update the count down every 1 second
     var x = setInterval(function () {
 
-                // Get today's date and time
-                var now = new Date().getTime();
+        // Get today's date and time
+        var now = new Date().getTime();
 
-                // Find the distance between now and the count down date
-                var distance = countDownDate - now;
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
 
-                // Time calculations for days, hours, minutes and seconds
-                // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                // var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                // var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Time calculations for days, hours, minutes and seconds
+        // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        // var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        // var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                // Display the result in the element with id="timer"
-                document.getElementById("timer").innerHTML = "Time: " + seconds + "s ";
+        // Display the result in the element with id="timer"
+        document.getElementById("timer").innerHTML = "Time: " + seconds + "s ";
 
-                // If the count down is finished, write some text
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("timer").innerHTML = "TIME UP!";
-                } else if (quiz.isEnded()) {
-                    clearInterval(x);
-                    document.getElementById("timer").innerHTML = "QUIZ COMPLETE!";
-                }
-            
-        
-            },1000)
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "Time Up!";
+        } else if (quiz.isEnded()) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "Quiz Complete!";
+        };
+        if (question.isCorrectAnswer()) {
+            distance = countDownDate - now - 10000;
+        }
+
+
+    }, 1000)
 }
 // //var choiceButton = document.querySelectorAll(".choice-btn");
 // var buttons = document.getElementsByTagName("button");
@@ -178,6 +182,8 @@ Quiz.prototype.getQuestionIndex = function () {
 Quiz.prototype.guess = function (answer) {
     if (this.getQuestionIndex().isCorrectAnswer(answer)) {
         this.score++;
+    } else {
+        seconds -= 10;
     }
 
     this.questionIndex++;
@@ -280,7 +286,7 @@ var questions = [
 
 // create quiz
 var quiz = new Quiz(questions);
-
+var question = new Question();
 // display quiz
 startButton.addEventListener("click", startQuiz);
 //populate();
