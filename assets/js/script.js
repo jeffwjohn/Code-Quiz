@@ -147,7 +147,12 @@ var gameOver = function () {
 
         } else {
             alert("Your score has been saved. Click on 'View High Scores' to see your rank!");
-            
+            var scoresArray = localStorage.getItem('playerData');
+            scoresArray = scoresArray ? scoresArray.split(',') : [];
+            scoresArray.push(score + initials);
+            localStorage.setItem('playerData', scoresArray.toString());
+            // localStorage.getItem('playerData', playerData);
+            // localStorage.setItem('playerData', playerData);
             localStorage.setItem('score', score);
             localStorage.setItem('initials', initials);
         }
