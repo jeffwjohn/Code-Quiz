@@ -182,3 +182,7 @@ label {
       display: flex;
 
   }
+
+  #score-list {
+      font-family: 'Courier New', Courier, monospace;
+  }

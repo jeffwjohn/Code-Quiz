@@ -10,6 +10,7 @@
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Font+Name"> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <main class="page-content" id="page-content">
         <article class="score-list-wrapper">
@@ -17,9 +18,40 @@
             <ul class="score-list" id="score-list"></ul>
         </article>
         <section class="high-score-buttons">
-            <button class="button go-back-btn">Go Back</button>
+            <button type="submit" onclick="location.href='index.html';" class="button go-back-btn">Go Back</button>
             <button class="button clear-score-btn">Clear High Scores</button>
         </section>
-        </main>
+    </main>
+
+    <script>
+        var ulEl = document.querySelector("#score-list");
+
+        function showScoreInfo() {
+            var score = localStorage.getItem('score');
+            var initials = localStorage.getItem('initials');
+            
+            if (score === null || initials === null) {
+                return;
+            }
+            var listPlace = document.createElement("li");
+            listPlace.id = "place";
+            listPlace.textContent = initials + " ................ " + score;
+            ulEl.appendChild(listPlace);
+
+        }
+
+        var clearButton = document.querySelector(".clear-score-btn")
+
+        clearButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            localStorage.clear();
+            location.reload();
+        });
+
+        showScoreInfo();
+        
+    </script>
+
 </body>
+
 </html>
