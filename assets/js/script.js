@@ -220,6 +220,7 @@ function guess(id, guess) {
     var button = document.getElementById(id);
     button.onclick = function () {
         quiz.guess(guess);
+        // after choosing, card is erased 
         var questionEl = document.querySelector(".question");
         mainEl.removeChild(questionEl);
         var choiceEl = document.querySelector("button");
@@ -241,16 +242,61 @@ function showProgress() {
     element.innerHTML = "Question " + currentQuestionNumber + " of " + quiz.questions.length;
 };
 
+// Get initials and score and send to local storage
+var scores = [];
+var submitButton = document.querySelector("#submit");
+var scoreListEl = document.querySelector("#score-list");
+var scoreEl = scores[0];
+var initialsInput = document.querySelector('#initials');
+
 var gameOver = function () {
+    
     var scoreCard = document.createElement("article");
     scoreCard.id = "score-card-id";
     scoreCard.className = "score-card";
     mainEl.appendChild(scoreCard);
     var gameOverHTML = "<h3>All done!</h3>";
     gameOverHTML += "<p id='score'> Your final score is " + quiz.score + "</p>"
-    gameOverHTML += "<form><label for='initials'>Enter initials: </label><input type='text' id='initials' name='initials'><br><input type='submit' id='submit' class='button' value='Submit'></form>"
+    gameOverHTML += "<form><label for='initials'>Enter initials: </label><input type='text' id='initials' name='initials' /><br><button id='btn'>Submit</button></form>"
     scoreCard.innerHTML = gameOverHTML;
+    scores.push(quiz.score);
+    console.log(scores);
+    var button = document.getElementById('btn');
+    button.onclick = function () {
+        event.preventDefault();
+
+        var score = quiz.score
+        var initials = document.querySelector('#initials').value;
+    
+        if (initials === "") {
+            alert("Initials field cannot be blank! Try again.");
+            
+        } else {
+            alert("Your score has been saved. Click on 'View High Scores' to see your rank!");
+    
+            localStorage.setItem('score', score);
+            localStorage.setItem('initials', initials);
+        }
+        console.log(initials);
+    }
+    
+
+    // scores.push({score:quiz.score, player:'#initials'});
 };
+
+
+
+
+
+
+
+
+// Quiz.score.forEach(scoreCompiler);
+
+// function scoreCompiler () {
+//     scores.push({score:score, player: initials});
+// }
+
 
 // create questions here
 var questions = [
@@ -261,9 +307,11 @@ var questions = [
     new Question("Arrays in JavaScript can be used to store __________", ["numbers and strings", "other arrays", "booleans", "all of the above"], "all of the above")
 ];
 
+
 // create quiz
 var quiz = new Quiz(questions);
 var question = new Question();
 // display quiz
 startButton.addEventListener("click", startQuiz);
+
 //populate();

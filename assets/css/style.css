@@ -27,6 +27,19 @@ header {
     margin: 20px;
 }
 
+.header-text {
+    text-decoration: none;
+    
+}
+
+.header-text:visited {
+    color: none;
+}
+
+.header-text:hover {
+    color: magenta;
+}
+
 main {
     display: flex;
     flex-flow: column;
@@ -101,9 +114,10 @@ article p, label {
 } */
 
 #start,
-#submit {
+#submit, .high-score-btn {
     text-align: center;
     width: auto;
+    margin: 5px;
 }
 
 .score-card {
@@ -141,3 +155,30 @@ label {
     border-top: 1px solid grey;
 
 }
+
+.list-title {
+    margin: 0;
+}
+
+.score-list-wrapper {
+    border: 1px solid rebeccapurple;
+    display: flex;
+    width: auto;
+}
+.score-list {
+    list-style: none;
+    padding: 15px;
+    height: calc(100% - 50px);
+    background: rgb(212, 205, 218);
+    border-radius: 12px;
+    /* border: 2px solid var(--grey); */
+    /* border: 1px solid red; */
+    width: 70%;
+    margin: 10px 0 20px 0
+    
+  }
+
+  .high-score-buttons {
+      display: flex;
+
+  }
