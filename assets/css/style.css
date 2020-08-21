@@ -158,12 +158,21 @@ label {
 
 .list-title {
     margin: 0;
+    font-size: 2rem;
+    padding-top: 60px;
 }
 
 .score-list-wrapper {
     /* border: 1px solid rebeccapurple; */
     display: flex;
     width: auto;
+    height: auto;
+    background: rgb(212, 205, 218);
+    border-radius: 12px;
+    text-align: left;
+    border: 1px solid grey;
+    margin: 10px 0 20px 0;
+    
 }
 .score-list {
     list-style: none;
@@ -172,8 +181,8 @@ label {
     background: rgb(212, 205, 218);
     border-radius: 12px;
     border: 1px solid grey;
-    width: 70%;
-    margin: 10px 0 20px 0
+    
+    
     
   }
 
@@ -184,4 +193,8 @@ label {
 
   #score-list {
       font-family: 'Courier New', Courier, monospace;
+  }
+
+  ol li {
+      list-style: decimal;
   }

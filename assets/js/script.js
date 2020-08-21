@@ -147,7 +147,7 @@ var gameOver = function () {
 
         } else {
             alert("Your score has been saved. Click on 'View High Scores' to see your rank!");
-
+            
             localStorage.setItem('score', score);
             localStorage.setItem('initials', initials);
         }
