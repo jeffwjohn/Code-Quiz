@@ -132,10 +132,10 @@ var gameOver = function () {
     mainEl.appendChild(scoreCard);
     var gameOverHTML = "<h3>All done!</h3>";
     gameOverHTML += "<p id='score'> Your final score is " + quiz.score + "</p>"
-    gameOverHTML += "<form><label for='initials'>Enter initials: </label><input type='text' id='initials' name='initials' /><br><button id='btn'>Submit</button></form>"
+    gameOverHTML += "<form><label for='initials'>Enter initials: </label><input type='text' id='initials' name='initials' /><br><button id='submit' class='button'>Submit</button></form>"
     scoreCard.innerHTML = gameOverHTML;
     scores.push(quiz.score);
-    var button = document.getElementById('btn');
+    var button = document.getElementById('submit');
     button.onclick = function () {
         event.preventDefault();
 
