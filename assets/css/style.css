@@ -121,7 +121,7 @@ article p, label {
 }
 
 .score-card {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     align-items: flex-start;
     padding: 0 0 20px 20px;

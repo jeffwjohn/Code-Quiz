@@ -122,10 +122,12 @@ var scores = [];
 var submitButton = document.querySelector("#submit");
 var scoreListEl = document.querySelector("#score-list");
 var scoreEl = scores[0];
-var initialsInput = document.querySelector('#initials');
+
+
 
 var gameOver = function () {
 
+    var score = quiz.score
     var scoreCard = document.createElement("article");
     scoreCard.id = "score-card-id";
     scoreCard.className = "score-card";
@@ -134,30 +136,61 @@ var gameOver = function () {
     gameOverHTML += "<p id='score'> Your final score is " + quiz.score + "</p>"
     gameOverHTML += "<form><label for='initials'>Enter initials: </label><input type='text' id='initials' name='initials' /><br><button id='submit' class='button'>Submit</button></form>"
     scoreCard.innerHTML = gameOverHTML;
+    var initialsInput = document.querySelector('#initials');
     scores.push(quiz.score);
+    var initials = initialsInput.value.trim();
     var button = document.getElementById('submit');
     button.onclick = function () {
         event.preventDefault();
+        saveHighscore()
 
-        var score = quiz.score
-        var initials = document.querySelector('#initials').value;
-
-        if (initials === "") {
-            alert("Initials field cannot be blank! Try again.");
-
-        } else {
-            alert("Your score has been saved. Click on 'View High Scores' to see your rank!");
-            // save scores and initials together in a local storage array
-            var scoresArray = localStorage.getItem('playerData');
-            scoresArray = scoresArray ? scoresArray.split(',') : [];
-            // scoresArray.push(score + initials);
-            localStorage.setItem('playerData', scoresArray);
-            console.log(scoresArray);
-            localStorage.setItem('score', score);
-            localStorage.setItem('initials', initials);
-        }
     }
-};
+}
+//Michael's Code
+function saveHighscore() {
+     var score = quiz.score;
+     var initialsInput = document.querySelector('#initials');
+     var initials = initialsInput.value.trim();
+    alert("Your score has been saved. Click on 'View High Scores' to see your rank!");
+    // get value of input box
+    // var initials = document.querySelector('#initials').value;
+    // var initials = initialsInput.value.trim();
+    // make sure value wasn't empty
+    if (initials !== "") {
+      // get saved scores from localstorage, or if not any, set to empty array
+      var highscores =
+        JSON.parse(window.localStorage.getItem("highscores")) || [];
+      // format new score object for current user
+      var newScore = {
+        score: score,
+        initials: initials
+      };
+      // save to localstorage
+      highscores.push(newScore);
+      window.localStorage.setItem("highscores", JSON.stringify(highscores));
+      console.log(highscores);
+  }
+}
+
+//         // var score = quiz.score
+//         var initials = document.querySelector('#initials').value;
+
+//         if (initials === "") {
+//             alert("Initials field cannot be blank! Try again.");
+
+//         } else {
+//             alert("Your score has been saved. Click on 'View High Scores' to see your rank!");
+//             // save scores and initials together in a local storage array
+//             var scoresArray = localStorage.getItem('playerData');
+//             scoresArray = scoresArray ? scoresArray.split(',') : [];
+//             // scoresArray.push(score + initials);
+//             localStorage.setItem('playerData', scoresArray);
+//             console.log(scoresArray);
+//             localStorage.setItem('score', score);
+//             localStorage.setItem('initials', initials);
+//         }
+//     }
+// };
 
 var questions = [
     new Question("The condition in an if/else statement is enclosed with __________.", ["quotes", "curly brackets", "parentheses", "square brackets"], "parentheses"),
