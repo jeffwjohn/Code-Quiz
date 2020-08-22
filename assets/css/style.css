@@ -29,7 +29,7 @@ header {
 
 .header-text {
     text-decoration: none;
-    
+
 }
 
 .header-text:visited {
@@ -65,7 +65,8 @@ article {
 
 }
 
-article p, label {
+article p,
+label {
     font-family: 'Roboto-light', sans-serif;
     margin: 40px 0;
     line-height: 1.4;
@@ -114,7 +115,9 @@ article p, label {
 } */
 
 #start,
-#submit, #go-back, #clear {
+#submit,
+#go-back,
+#clear {
     text-align: center;
     width: auto;
     margin: 5px;
@@ -125,7 +128,7 @@ article p, label {
     display: flex;
     align-items: flex-start;
     padding: 0 0 20px 20px;
-   
+
 }
 
 .score-card h3 {
@@ -172,29 +175,30 @@ label {
     text-align: left;
     border: 1px solid grey;
     margin: 10px 0 20px 0;
-    
+
 }
+
 .score-list {
     list-style: none;
     padding: 15px;
     height: calc(100% - 50px);
     background: rgb(212, 205, 218);
     border-radius: 12px;
-    border: 1px solid grey;
-    
-    
-    
-  }
+    /* border: 1px solid grey; */
 
-  .high-score-buttons {
-      display: flex;
+
+
+}
+
+.high-score-buttons {
+    display: flex;
     justify-content: center;
-  }
+}
 
-  #score-list {
-      font-family: 'Courier New', Courier, monospace;
-  }
+#score-list {
+    font-family: 'Courier New', Courier, monospace;
+}
 
-  ol li {
-      list-style: decimal;
-  }
+ol li {
+    list-style: decimal;
+}
