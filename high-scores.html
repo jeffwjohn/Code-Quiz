@@ -16,7 +16,7 @@
         <h3 class="list-title">Top 10 High Scores</h3>
         <article class="score-list-wrapper">
             <ol class="score-list" id="score-list">
-                <li id="place1" class="list-item"></li>
+                <!-- <li id="place1" class="list-item"></li>
                 <li id="place2" class="list-item"></li>
                 <li id="place3" class="list-item"></li>
                 <li id="place4" class="list-item"></li>
@@ -25,7 +25,7 @@
                 <li id="place7" class="list-item"></li>
                 <li id="place8" class="list-item"></li>
                 <li id="place9" class="list-item"></li>
-                <li id="place10" class="list-item"></li>
+                <li id="place10" class="list-item"></li> -->
             </ol>
         </article>
         <section class="high-score-buttons">
@@ -36,50 +36,95 @@
     </main>
 
     <script>
-        var players = [];
-        var scores = [];
-        var ulEl = document.querySelector("#score-list");
-        var listItem = document.querySelector(".list-item");
-        // var i = 0;
-        // var playerInfo = {
-        //     initials: initials,
-        //     score: score
+        var score = localStorage.getItem('score');
+        var initials = localStorage.getItem('initials');
+
+        // function printHighScores() {
+
+        //     var highScores = JSON.parse(window.localStorage.getItem("playerData")) || [];
+
+        //     highScores.sort(function (a, b) {
+        //         return b.score - a.score;
+
+                
+        //     }) 
+
+        //   highScores.forEach(function(score) {
+        //       var liTag = document.createElement("li");
+        //       liTag.textContent = score.initials + ".........." + score.score;
+        //       var olTag = document.getElementById('score-list');
+        //       olTag.appendChild(liTag);
+        //   })
         // }
-        function showScoreInfo() {
-            var score = localStorage.getItem('score');
-            var initials = localStorage.getItem('initials');
-            // for (i = 0; i < 10; i++);
 
-            if (score === null || initials === null) {
-                return;
-            } else {
-                players.push(initials);
-                scores.push(score);
-                scores.sort(function (a, b) {
-                    return b - a
-                });
-                console.log(scores);
-                for (var i = 0; i < scores.length; i++) {
-                    var playerScoreEl = document.createElement('span');
-                    playerScoreEl.textContent = initials + " .......... " + scores[i];
-                    listItem.appendChild(playerScoreEl);
+        // printHighScores()
 
-                    localStorage.setItem("scores", JSON.stringify(scores));
-                }
-                // listItem.textContent = initials + " .......... " + score;
-            }
-            // sortArrays()
-            // var listPlace = document.createElement("li");
-            // listPlace.id = "place";
-            // listPlace.textContent = initials + " ................ " + score;
-            // ulEl.appendChild(listPlace);
+        // var players = [];
+        // var scores = [];
+        // var ulEl = document.querySelector("#score-list");
+        // var listItem = document.querySelector(".list-item");
+        // // var i = 0;
+        // // var playerInfo = {
+        // //     initials: initials,
+        // //     score: score
+        // // }
+        // function showScoreInfo() {
+        //     var playerData = localStorage.getItem('playerData');
 
-        }
+        //     console.log(playerData);
+        // var score = localStorage.getItem('score');
+        // var initials = localStorage.getItem('initials');
+        //     // for (i = 0; i < 10; i++);
 
-        // sortArrays = function () {
+        //     if (score === null || initials === null || playerData === null) {
+        //         return;
+        //     } else {
+        //         // players.push(initials);
+        //         // scores.push(score);
+        //         // playerData.charAt(0);
+        //         // alert(playerData.charAt(0));
+        //         // playerData.slice();
 
+
+        //         // playerScore.sort(function(a, b) {return a - b});
+        //         console.log("currentPlayerData",playerData);
+        //         var playerDataArr = playerData.split(", ");
+        //         playerDataArr.slice(",");
+        //         console.log("updated PlayerData", playerDataArr);
+        //         var playerDataNumber = playerDataArr.splice(0,);
+
+        //         console.log("number PlayerData", playerDataNumber);
+        //         // export const sortAlphaNumeric = (a, b) => {
+        //         //     // convert to strings and force lowercase
+        //         //     a = typeof a === 'string' ? a.toLowerCase() : a.toString();
+        //         //     b = typeof b === 'string' ? b.toLowerCase() : b.toString();
+
+        //         //     return a.localeCompare(b);
+        //         // };
+        //         // playerData.sortAlphaNumeric;
+
+
+        //         for (var i = 0; i < playerData.length; i++) {
+        //             var playerScoreEl = document.createElement('li');
+        //             playerScoreEl.textContent = initials + " .......... " + scores[i];
+        //             ulEl.appendChild(playerScoreEl);
+
+        //             localStorage.setItem("scores", JSON.stringify(scores));
+        //         }
+        //         // listItem.textContent = initials + " .......... " + score;
+        //     }
+        //     // sortArrays()
+        //     // var listPlace = document.createElement("li");
+        //     // listPlace.id = "place";
+        //     // listPlace.textContent = initials + " ................ " + score;
+        //     // ulEl.appendChild(listPlace);
 
         // }
+
+        // // sortArrays = function () {
+
+
+        // // }
 
         var clearButton = document.querySelector(".clear-score-btn")
 
@@ -88,8 +133,8 @@
             localStorage.clear();
             location.reload();
         });
-        debugger;
-        showScoreInfo();
+        // // debugger;
+        // showScoreInfo();
     </script>
 
 </body>

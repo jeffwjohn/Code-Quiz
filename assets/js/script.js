@@ -147,12 +147,12 @@ var gameOver = function () {
 
         } else {
             alert("Your score has been saved. Click on 'View High Scores' to see your rank!");
+            // save scores and initials together in a local storage array
             var scoresArray = localStorage.getItem('playerData');
             scoresArray = scoresArray ? scoresArray.split(',') : [];
-            scoresArray.push(score + initials);
-            localStorage.setItem('playerData', scoresArray.toString());
-            // localStorage.getItem('playerData', playerData);
-            // localStorage.setItem('playerData', playerData);
+            // scoresArray.push(score + initials);
+            localStorage.setItem('playerData', scoresArray);
+            console.log(scoresArray);
             localStorage.setItem('score', score);
             localStorage.setItem('initials', initials);
         }
@@ -170,3 +170,22 @@ var questions = [
 var quiz = new Quiz(questions);
 
 startButton.addEventListener("click", startQuiz);
+
+//Michael's Code
+// function saveHighscore() {
+//     // get value of input box
+//     var initials = initialsEl.value.trim();
+//     // make sure value wasn't empty
+//     if (initials !== "") {
+//       // get saved scores from localstorage, or if not any, set to empty array
+//       var highscores =
+//         JSON.parse(window.localStorage.getItem("highscores")) || [];
+//       // format new score object for current user
+//       var newScore = {
+//         score: time,
+//         initials: initials
+//       };
+//       // save to localstorage
+//       highscores.push(newScore);
+//       window.localStorage.setItem("highscores", JSON.stringify(highscores));
+//   }
