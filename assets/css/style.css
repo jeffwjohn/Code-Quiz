@@ -17,8 +17,6 @@ body {
     border: 2px solid black;
     font-family: 'Roboto-Bold', sans-serif;
     height: 700px;
-
-
 }
 
 header {
@@ -43,17 +41,14 @@ header {
 main {
     display: flex;
     flex-flow: column;
-    /* border: 2px solid darkslateblue; */
     justify-content: center;
     text-align: center;
     margin: 50px 50px 50px 50px;
-    /* padding-bottom: 50px; */
     height: 500px;
 
 }
 
 article {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -100,19 +95,13 @@ label {
     text-align: left;
     margin: 5px 0;
     font-family: 'Roboto-light', sans-serif;
-    /* box-shadow: 1px 1px grey; */
-
-
+    
 }
 
 .button:hover {
     cursor: pointer;
     background-color: magenta;
 }
-
-/* #btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
-    outline: 0;
-} */
 
 #start,
 #submit,
@@ -123,12 +112,14 @@ label {
     margin: 5px;
 }
 
+#submit {
+    margin: 20px 0;
+}
+
 .score-card {
-    /* border: 1px solid red; */
     display: flex;
     align-items: flex-start;
     padding: 0 0 20px 20px;
-
 }
 
 .score-card h3 {
@@ -142,10 +133,6 @@ label {
 label {
     font-family: 'Roboto-light', sans-serif;
 }
-
-/* #next {
-    text-align: ;
-} */
 
 .verify {
     color: grey;
@@ -166,7 +153,6 @@ label {
 }
 
 .score-list-wrapper {
-    /* border: 1px solid rebeccapurple; */
     display: flex;
     width: auto;
     height: auto;
@@ -178,16 +164,13 @@ label {
 
 }
 
-.score-list {
+.score-list { 
     list-style: none;
-    padding: 15px;
+    padding: 15px 0 35px 70px;
     height: calc(100% - 50px);
     background: rgb(212, 205, 218);
     border-radius: 12px;
-    /* border: 1px solid grey; */
-
-
-
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .high-score-buttons {
@@ -195,10 +178,7 @@ label {
     justify-content: center;
 }
 
-#score-list {
-    font-family: 'Courier New', Courier, monospace;
-}
-
 ol li {
     list-style: decimal;
+    
 }

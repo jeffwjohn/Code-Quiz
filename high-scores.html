@@ -16,16 +16,6 @@
         <h3 class="list-title">Top 10 High Scores</h3>
         <article class="score-list-wrapper">
             <ol class="score-list" id="score-list">
-                <!-- <li id="place1" class="list-item"></li>
-                <li id="place2" class="list-item"></li>
-                <li id="place3" class="list-item"></li>
-                <li id="place4" class="list-item"></li>
-                <li id="place5" class="list-item"></li>
-                <li id="place6" class="list-item"></li>
-                <li id="place7" class="list-item"></li>
-                <li id="place8" class="list-item"></li>
-                <li id="place9" class="list-item"></li>
-                <li id="place10" class="list-item"></li> -->
             </ol>
         </article>
         <section class="high-score-buttons">
@@ -39,114 +29,27 @@
         var score = localStorage.getItem('score');
         var initials = localStorage.getItem('initials');
         var olEl = document.querySelector("#score-list");
-        // console.log(typeof score, initials);
-
+    
         function printHighScores() {
 
             var highScores = JSON.parse(window.localStorage.getItem("highscores")) || [];
             console.log(highScores);
             console.log(typeof highScores.score);
             var initialsJSON = JSON.stringify(highScores[initials]);
-            console.log("initials data type:", typeof highScores[0].initials);
-            console.log("score data type:", typeof highScores[0].score);
-            console.log(highScores[0].score);
-
             highScores.sort(function (a, b) {
                 return b.score - a.score;
 
             })
 
-            for (var i = 0; i < highScores.length; i++) {
+            for (var i = 0; i < 10; i++) {
                 var playerScoreEl = document.createElement('li');
+                playerScoreEl.className = "playerData";
                 playerScoreEl.textContent = highScores[i].initials + " ....................... " + highScores[i].score;
                 olEl.appendChild(playerScoreEl);
-
-                // localStorage.setItem("scores", JSON.stringify(scores));
             }
-            // listItem.textContent = initials + " .......... " + score;
-
         }
 
-
         printHighScores()
-
-
-        //   highScores.forEach(function(score) {
-        //       var liTag = document.createElement("li");
-        //       liTag.textContent = score.initials + ".........." + score.score;
-        //       var olTag = document.getElementById('score-list');
-        //       olTag.appendChild(liTag);
-        //   })
-        // }
-
-        // printHighScores()
-
-        // var players = [];
-        // var scores = [];
-        // var olEl = document.querySelector("#score-list");
-        // var listItem = document.querySelector(".list-item");
-        // // var i = 0;
-        // // var playerInfo = {
-        // //     initials: initials,
-        // //     score: score
-        // // }
-        // function showScoreInfo() {
-        //     var playerData = localStorage.getItem('playerData');
-
-        //     console.log(playerData);
-        // var score = localStorage.getItem('score');
-        // var initials = localStorage.getItem('initials');
-        //     // for (i = 0; i < 10; i++);
-
-        //     if (score === null || initials === null || playerData === null) {
-        //         return;
-        //     } else {
-        //         // players.push(initials);
-        //         // scores.push(score);
-        //         // playerData.charAt(0);
-        //         // alert(playerData.charAt(0));
-        //         // playerData.slice();
-
-
-        //         // playerScore.sort(function(a, b) {return a - b});
-        //         console.log("currentPlayerData",playerData);
-        //         var playerDataArr = playerData.split(", ");
-        //         playerDataArr.slice(",");
-        //         console.log("updated PlayerData", playerDataArr);
-        //         var playerDataNumber = playerDataArr.splice(0,);
-
-        //         console.log("number PlayerData", playerDataNumber);
-        //         // export const sortAlphaNumeric = (a, b) => {
-        //         //     // convert to strings and force lowercase
-        //         //     a = typeof a === 'string' ? a.toLowerCase() : a.toString();
-        //         //     b = typeof b === 'string' ? b.toLowerCase() : b.toString();
-
-        //         //     return a.localeCompare(b);
-        //         // };
-        //         // playerData.sortAlphaNumeric;
-
-
-        //         for (var i = 0; i < playerData.length; i++) {
-        //             var playerScoreEl = document.createElement('li');
-        //             playerScoreEl.textContent = initials + " .......... " + scores[i];
-        //             ulEl.appendChild(playerScoreEl);
-
-        //             localStorage.setItem("scores", JSON.stringify(scores));
-        //         }
-        //         // listItem.textContent = initials + " .......... " + score;
-        //     }
-        //     // sortArrays()
-        //     // var listPlace = document.createElement("li");
-        //     // listPlace.id = "place";
-        //     // listPlace.textContent = initials + " ................ " + score;
-        //     // ulEl.appendChild(listPlace);
-
-        // }
-
-        // // sortArrays = function () {
-
-
-        // // }
 
         var clearButton = document.querySelector(".clear-score-btn")
 
@@ -155,8 +58,6 @@
             localStorage.clear();
             location.reload();
         });
-        // // debugger;
-        // showScoreInfo();
     </script>
 
 </body>

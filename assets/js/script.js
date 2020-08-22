@@ -141,33 +141,30 @@ var gameOver = function () {
     gameOverHTML += `<p id='score'> Your final score is ${quiz.score + seconds} </p>`
     gameOverHTML += "<form><label for='initials'>Enter initials: </label><input type='text' id='initials' name='initials' /><br><button id='submit' class='button'>Submit</button></form>"
     scoreCard.innerHTML = gameOverHTML;
-    var initialsInput = document.querySelector('#initials');
+    
     scores.push(quiz.score);
-    var initials = initialsInput.value.trim();
+    
     var button = document.getElementById('submit');
     button.onclick = function () {
         event.preventDefault();
         saveHighscore()
+        this.disabled = true;
 
     }
 }
-//Michael's Code Help
+
 function saveHighscore() {
-    console.log("types", typeof quiz.score, typeof seconds);
-    console.log("if", seconds);
     var score = quiz.score + seconds;
+    // get value of input box
     var initialsInput = document.querySelector('#initials');
     var initials = initialsInput.value.trim();
 
-    // get value of input box
-    // var initials = document.querySelector('#initials').value;
-    // var initials = initialsInput.value.trim();
-    // make sure value wasn't empty
+    // make sure input is valid
     if (initials === "" || initials.length < 3 || initials.length > 3) {
         alert("Initials field cannot be blank and must be 3 characters long! Try again.");
 
     } else {
-        alert("Your score has been saved. Click on 'View High Scores' to see your rank!");
+        alert("Your score has been saved. Let's see if you made the Top 10!");
         // get saved scores from localstorage, or if not any, set to empty array
         var highscores =
             JSON.parse(window.localStorage.getItem("highscores")) || [];
@@ -176,31 +173,12 @@ function saveHighscore() {
             score: score,
             initials: initials
         }
-
-        console.log("newScore", newScore.score);
         // save to localstorage
         highscores.push(newScore);
         window.localStorage.setItem("highscores", JSON.stringify(highscores));
-        console.log(highscores);
+        location.replace("high-scores.html")
     }
 }
-
-//         // var score = quiz.score
-//         var initials = document.querySelector('#initials').value;
-
-
-//             alert("Your score has been saved. Click on 'View High Scores' to see your rank!");
-//             // save scores and initials together in a local storage array
-//             var scoresArray = localStorage.getItem('playerData');
-//             scoresArray = scoresArray ? scoresArray.split(',') : [];
-//             // scoresArray.push(score + initials);
-//             localStorage.setItem('playerData', scoresArray);
-//             console.log(scoresArray);
-//             localStorage.setItem('score', score);
-//             localStorage.setItem('initials', initials);
-//         }
-//     }
-// };
 
 var questions = [
     new Question("The condition in an if/else statement is enclosed with __________.", ["quotes", "curly brackets", "parentheses", "square brackets"], "parentheses"),
@@ -213,22 +191,3 @@ var questions = [
 var quiz = new Quiz(questions);
 
 startButton.addEventListener("click", startQuiz);
-
-//Michael's Code
-// function saveHighscore() {
-//     // get value of input box
-//     var initials = initialsEl.value.trim();
-//     // make sure value wasn't empty
-//     if (initials !== "") {
-//       // get saved scores from localstorage, or if not any, set to empty array
-//       var highscores =
-//         JSON.parse(window.localStorage.getItem("highscores")) || [];
-//       // format new score object for current user
-//       var newScore = {
-//         score: time,
-//         initials: initials
-//       };
-//       // save to localstorage
-//       highscores.push(newScore);
-//       window.localStorage.setItem("highscores", JSON.stringify(highscores));
-//   }
