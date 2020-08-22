@@ -127,13 +127,13 @@ var scoreEl = scores[0];
 
 var gameOver = function () {
 
-    var score = quiz.score
+    // var score = quiz.score
     var scoreCard = document.createElement("article");
     scoreCard.id = "score-card-id";
     scoreCard.className = "score-card";
     mainEl.appendChild(scoreCard);
     var gameOverHTML = "<h3>All done!</h3>";
-    gameOverHTML += "<p id='score'> Your final score is " + (parseFloat(quiz.score) + parseFloat(seconds)) + "</p>"
+    gameOverHTML += `<p id='score'> Your final score is ${quiz.score + seconds} </p>`
     gameOverHTML += "<form><label for='initials'>Enter initials: </label><input type='text' id='initials' name='initials' /><br><button id='submit' class='button'>Submit</button></form>"
     scoreCard.innerHTML = gameOverHTML;
     var initialsInput = document.querySelector('#initials');
@@ -148,7 +148,8 @@ var gameOver = function () {
 }
 //Michael's Code
 function saveHighscore() {
-    var score = quiz.score;
+    console.log("types", typeof quiz.score, typeof seconds);
+    var score = quiz.score + seconds;
     var initialsInput = document.querySelector('#initials');
     var initials = initialsInput.value.trim();
 
