@@ -38,22 +38,38 @@
     <script>
         var score = localStorage.getItem('score');
         var initials = localStorage.getItem('initials');
+        var olEl = document.querySelector("#score-list");
+        // console.log(typeof score, initials);
 
         function printHighScores() {
 
             var highScores = JSON.parse(window.localStorage.getItem("highscores")) || [];
             console.log(highScores);
+            console.log(typeof highScores.score);
+            var initialsJSON = JSON.stringify(highScores[initials]);
+            console.log("initials data type:", typeof highScores[0].initials);
+            console.log("score data type:", typeof highScores[0].score);
+            console.log(highScores[0].score);
 
             highScores.sort(function (a, b) {
                 return b.score - a.score;
-                
 
-                
-            }) 
+            })
+
+            for (var i = 0; i < highScores.length; i++) {
+                var playerScoreEl = document.createElement('li');
+                playerScoreEl.textContent = highScores[i].initials + " .......... " + highScores[i].score;
+                olEl.appendChild(playerScoreEl);
+
+                // localStorage.setItem("scores", JSON.stringify(scores));
+            }
+            // listItem.textContent = initials + " .......... " + score;
+
         }
 
+
         printHighScores()
-           
+
 
         //   highScores.forEach(function(score) {
         //       var liTag = document.createElement("li");
@@ -67,7 +83,7 @@
 
         // var players = [];
         // var scores = [];
-        // var ulEl = document.querySelector("#score-list");
+        // var olEl = document.querySelector("#score-list");
         // var listItem = document.querySelector(".list-item");
         // // var i = 0;
         // // var playerInfo = {
