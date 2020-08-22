@@ -41,6 +41,9 @@ Quiz.prototype.guess = function (answer) {
         this.score++;
     } else {
         seconds -= 10;
+        if (seconds < 0) {
+            seconds = 0;
+        }
     }
 
     this.questionIndex++;
