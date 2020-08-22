@@ -185,7 +185,7 @@ var questions = [
     new Question("Commonly used data types DO NOT include:", ["strings", "booleans", "alerts", "numbers"], "alerts"),
     new Question("A very useful tool used during development and debugging for printing content to the debugger is:", ["JavaScript", "Terminal/Bash", "for loops", "console.log"], "console.log"),
     new Question("String values must be enclosed within __________ when being assigned to variables.", ["commas", "curly brackets", "quotes", "parentheses"], "quotes"),
-    new Question("Arrays in JavaScript can be used to store __________", ["numbers and strings", "other arrays", "booleans", "all of the above"], "all of the above")
+    new Question("Arrays in JavaScript can be used to store __________.", ["numbers and strings", "other arrays", "booleans", "all of the above"], "all of the above")
 ];
 
 var quiz = new Quiz(questions);

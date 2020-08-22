@@ -45,6 +45,7 @@ main {
     text-align: center;
     margin: 50px 50px 50px 50px;
     height: 500px;
+    align-items: center;
 
 }
 
@@ -154,23 +155,26 @@ label {
 
 .score-list-wrapper {
     display: flex;
-    width: auto;
-    height: auto;
+    width: max-content;
+    height: 100%;
     background: rgb(212, 205, 218);
     border-radius: 12px;
-    text-align: left;
+    text-align: center;
     border: 1px solid grey;
-    margin: 10px 0 20px 0;
+    margin: 20px 0 20px 0;
+    overflow-wrap: break-word;
 
 }
 
 .score-list { 
     list-style: none;
-    padding: 15px 0 35px 70px;
-    height: calc(100% - 50px);
-    background: rgb(212, 205, 218);
+    /* height: calc(100% - 50px); */
+    /* background: rgb(212, 205, 218); */
     border-radius: 12px;
     font-family: 'Courier New', Courier, monospace;
+    overflow-wrap: break-word;
+    
+    
 }
 
 .high-score-buttons {
@@ -180,5 +184,10 @@ label {
 
 ol li {
     list-style: decimal;
-    
+    /* font-size: 2.3vmin; */
+   
+}
+
+li {
+    text-align: left;
 }
