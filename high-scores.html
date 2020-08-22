@@ -39,15 +39,21 @@
         var score = localStorage.getItem('score');
         var initials = localStorage.getItem('initials');
 
-        // function printHighScores() {
+        function printHighScores() {
 
-        //     var highScores = JSON.parse(window.localStorage.getItem("playerData")) || [];
+            var highScores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+            console.log(highScores);
 
-        //     highScores.sort(function (a, b) {
-        //         return b.score - a.score;
+            highScores.sort(function (a, b) {
+                return b.score - a.score;
+                
 
                 
-        //     }) 
+            }) 
+        }
+
+        printHighScores()
+           
 
         //   highScores.forEach(function(score) {
         //       var liTag = document.createElement("li");
