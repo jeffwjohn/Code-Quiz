@@ -9,7 +9,8 @@ function startTimer() {
     var x = setInterval(function () {
         seconds--;
         document.getElementById("timer").innerHTML = "Time: " + seconds + "s ";
-        if (seconds < 0) {
+        if (seconds <= 0) {
+            seconds = 0;
             clearInterval(x);
             document.getElementById("timer").innerHTML = "Time Up!";
         } else if (quiz.isEnded()) {
@@ -30,6 +31,7 @@ function Quiz(questions) {
     this.score = 0;
     this.questions = questions;
     this.questionIndex = 0;
+
 }
 
 Quiz.prototype.getQuestionIndex = function () {
@@ -41,9 +43,6 @@ Quiz.prototype.guess = function (answer) {
         this.score++;
     } else {
         seconds -= 10;
-        if (seconds < 0) {
-            seconds = 0;
-        }
     }
 
     this.questionIndex++;
@@ -130,6 +129,9 @@ var scoreEl = scores[0];
 
 var gameOver = function () {
 
+    if (seconds < 0) {
+        seconds = 0;
+    }
     // var score = quiz.score
     var scoreCard = document.createElement("article");
     scoreCard.id = "score-card-id";
@@ -149,9 +151,10 @@ var gameOver = function () {
 
     }
 }
-//Michael's Code
+//Michael's Code Help
 function saveHighscore() {
     console.log("types", typeof quiz.score, typeof seconds);
+    console.log("if", seconds);
     var score = quiz.score + seconds;
     var initialsInput = document.querySelector('#initials');
     var initials = initialsInput.value.trim();
@@ -172,7 +175,9 @@ function saveHighscore() {
         var newScore = {
             score: score,
             initials: initials
-        };
+        }
+
+        console.log("newScore", newScore.score);
         // save to localstorage
         highscores.push(newScore);
         window.localStorage.setItem("highscores", JSON.stringify(highscores));
