@@ -117,6 +117,7 @@ function showProgress() {
     var currentQuestionNumber = quiz.questionIndex + 1;
     var element = document.getElementById("progress");
     element.innerHTML = "Question " + currentQuestionNumber + " of " + quiz.questions.length;
+    
 };
 
 // Get initials and score and send to local storage
@@ -133,6 +134,8 @@ var gameOver = function () {
         seconds = 0;
     }
     // var score = quiz.score
+    var footer = document.querySelector('#progress');
+    footer.innerHTML = "";
     var scoreCard = document.createElement("article");
     scoreCard.id = "score-card-id";
     scoreCard.className = "score-card";
@@ -148,7 +151,7 @@ var gameOver = function () {
     button.onclick = function () {
         event.preventDefault();
         saveHighscore()
-        this.disabled = true;
+        
 
     }
 }
