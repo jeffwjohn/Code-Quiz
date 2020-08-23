@@ -167,7 +167,7 @@ function saveHighscore() {
         alert("Initials field cannot be blank and must be 3 characters long! Try again.");
 
     } else {
-        alert("Your score has been saved. Let's see if you made the Top 10!");
+        // alert("Your score has been saved. Let's see if you made the Top 10!");
         // get saved scores from localstorage, or if not any, set to empty array
         var highscores =
             JSON.parse(window.localStorage.getItem("highscores")) || [];
