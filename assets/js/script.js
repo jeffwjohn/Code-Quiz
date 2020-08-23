@@ -157,7 +157,7 @@ var gameOver = function () {
 }
 
 function saveHighscore() {
-    var score = quiz.score + seconds;
+    var score = quiz.score + Math.ceil(seconds);
     // get value of input box
     var initialsInput = document.querySelector('#initials');
     var initials = initialsInput.value.trim();
