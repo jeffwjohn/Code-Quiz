@@ -2,6 +2,8 @@ var mainEl = document.querySelector("#main");
 var startCard = document.querySelector("#startCard");
 var startButton = document.querySelector("#start");
 var seconds = 60;
+var submitButton = document.querySelector("#submit");
+var scoreListEl = document.querySelector("#score-list");
 
 // CREATE TIMER
 function startTimer() {
@@ -25,6 +27,7 @@ var startQuiz = function (event) {
     generate()
     startTimer()
 };
+
 // SET GAME DATA
 function Game(questions) {
     this.score = 0;
@@ -32,10 +35,12 @@ function Game(questions) {
     this.questionIndex = 0;
 
 }
+
 // SELECT QUESTION FROM ARRAY
 Game.prototype.getQuestionIndex = function () {
     return this.questions[this.questionIndex];
 }
+
 // ADJUST SCORE AND TIMER USING ANSWER CHOICE
 Game.prototype.selection = function (answer) {
     if (this.getQuestionIndex().isCorrectAnswer(answer)) {
@@ -46,6 +51,7 @@ Game.prototype.selection = function (answer) {
 
     this.questionIndex++;
 }
+
 // CREATE FUNCTION TO ID END OF GAME
 Game.prototype.isEnded = function () {
     return this.questionIndex === this.questions.length;
@@ -57,10 +63,12 @@ function Question(text, choices, answer) {
     this.choices = choices;
     this.answer = answer;
 }
+
 // ID AND RETURN CORRECT ANSWER 
 Question.prototype.isCorrectAnswer = function (choice) {
     return this.answer === choice;
 }
+
 // GENERATE QUIZ QUESTION CARDS
 function generate() {
     if (quiz.isEnded()) {
@@ -92,12 +100,13 @@ function generate() {
         questionNumber();
     }
 };
+
 // CAPTURE USER SELECTION
 function selection(id, selection) {
     var button = document.getElementById(id);
     button.onclick = function () {
         quiz.selection(selection);
-        // after choosing, card is erased 
+        // ERASE CURRENT CARD AFTER SELECTION
         var questionEl = document.querySelector(".question");
         mainEl.removeChild(questionEl);
         var choiceEl = document.querySelector("button");
@@ -111,6 +120,7 @@ function selection(id, selection) {
         generate();
     }
 };
+
 // DISPLAY CURRENT QUESTION NUMBER
 function questionNumber() {
     var currentQuestionNumber = quiz.questionIndex + 1;
@@ -118,42 +128,37 @@ function questionNumber() {
     element.innerHTML = "Question " + currentQuestionNumber + " of " + quiz.questions.length;
     
 };
-
-
-var scores = [];
-var submitButton = document.querySelector("#submit");
-var scoreListEl = document.querySelector("#score-list");
-var scoreEl = scores[0];
-
-
-
+// DECLARE END OF GAME, DISPLAY SCORE AND PROMPT INITIALS INPUT 
 var gameOver = function () {
-
+    // PREVENT NEGATIVE SCORES DUE TO TIME PENALTY
     if (seconds < 0) {
         seconds = 0;
     }
+
+    // ERASE QUESTION NUMBER DISPLAY
     var footer = document.querySelector('#progress');
     footer.innerHTML = "";
+
+    // CREATE SCORE CARD
     var scoreCard = document.createElement("article");
     scoreCard.id = "score-card-id";
     scoreCard.className = "score-card";
     mainEl.appendChild(scoreCard);
+
+    // CREATE INITIALS INPUT AND SUBMIT BUTTON, CALCULATE FINAL SCORE
     var gameOverHTML = "<h3>All done!</h3>";
     gameOverHTML += `<p id='score'> Your final score is ${quiz.score + seconds} </p>`
     gameOverHTML += "<form><label for='initials'>Enter initials: </label><input type='text' id='initials' name='initials' /><br><button id='submit' class='button'>Submit</button></form>"
     scoreCard.innerHTML = gameOverHTML;
-    
-    scores.push(quiz.score);
-    
+        
     var button = document.getElementById('submit');
     button.onclick = function () {
         event.preventDefault();
         saveHighscore()
-        
-
     }
 }
 
+// SAVE PLAYER DATA IN LOCAL STORAGE
 function saveHighscore() {
     var score = quiz.score + Math.ceil(seconds);
     // get value of input box
@@ -165,7 +170,7 @@ function saveHighscore() {
         alert("Initials field cannot be blank and must be 3 characters long! Try again.");
 
     } else {
-        // alert("Your score has been saved. Let's see if you made the Top 10!");
+        alert("Your score has been saved. Let's see if you made the Top 10!");
         // get saved scores from localstorage, or if not any, set to empty array
         var highscores =
             JSON.parse(window.localStorage.getItem("highscores")) || [];
@@ -181,6 +186,7 @@ function saveHighscore() {
     }
 }
 
+// QUESTION DATA ARRAY
 var questions = [
     new Question("The condition in an if/else statement is enclosed with __________.", ["quotes", "curly brackets", "parentheses", "square brackets"], "parentheses"),
     new Question("Commonly used data types DO NOT include:", ["strings", "booleans", "alerts", "numbers"], "alerts"),
@@ -188,6 +194,7 @@ var questions = [
     new Question("String values must be enclosed within __________ when being assigned to variables.", ["commas", "curly brackets", "quotes", "parentheses"], "quotes"),
     new Question("Arrays in JavaScript can be used to store __________.", ["numbers and strings", "other arrays", "booleans", "all of the above"], "all of the above")
 ];
+
 
 var quiz = new Game(questions);
 
