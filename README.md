@@ -8,7 +8,7 @@ An online app that quizzes players about computer coding.
 * CSS
 * JavaScript
 
-![Screenshot](assets/images/screen-shot.png)
+![Screenshot](assets/images/Screen Shot 2020-08-22 at 8.31.37 PM.png)
 
 ## Website
  https://jeffwjohn.github.io/Code-Quiz
