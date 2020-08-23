@@ -1,10 +1,9 @@
 var mainEl = document.querySelector("#main");
 var startCard = document.querySelector("#startCard");
-var questionCard = document.querySelector(".question");
-var choiceButton = document.querySelector(".choice-btn");
 var startButton = document.querySelector("#start");
 var seconds = 60;
 
+// CREATE TIMER
 function startTimer() {
     var x = setInterval(function () {
         seconds--;
@@ -23,22 +22,22 @@ function startTimer() {
 // START QUIZ
 var startQuiz = function (event) {
     startCard.remove();
-    populate()
+    generate()
     startTimer()
 };
-
-function Quiz(questions) {
+// SET GAME DATA
+function Game(questions) {
     this.score = 0;
     this.questions = questions;
     this.questionIndex = 0;
 
 }
-
-Quiz.prototype.getQuestionIndex = function () {
+// SELECT QUESTION FROM ARRAY
+Game.prototype.getQuestionIndex = function () {
     return this.questions[this.questionIndex];
 }
-
-Quiz.prototype.guess = function (answer) {
+// ADJUST SCORE AND TIMER USING ANSWER CHOICE
+Game.prototype.selection = function (answer) {
     if (this.getQuestionIndex().isCorrectAnswer(answer)) {
         this.score++;
     } else {
@@ -47,36 +46,36 @@ Quiz.prototype.guess = function (answer) {
 
     this.questionIndex++;
 }
-
-Quiz.prototype.isEnded = function () {
+// CREATE FUNCTION TO ID END OF GAME
+Game.prototype.isEnded = function () {
     return this.questionIndex === this.questions.length;
 }
 
-
+// SET QUESTION DATA
 function Question(text, choices, answer) {
     this.text = text;
     this.choices = choices;
     this.answer = answer;
 }
-
+// ID AND RETURN CORRECT ANSWER 
 Question.prototype.isCorrectAnswer = function (choice) {
     return this.answer === choice;
 }
-
-function populate() {
+// GENERATE QUIZ QUESTION CARDS
+function generate() {
     if (quiz.isEnded()) {
         gameOver();
 
     } else {
 
-        // create question 
+        // CREATE QUESTION ELEMENT
         var questionEl = document.createElement("article");
         questionEl.className = "question";
         questionEl.innerHTML = quiz.getQuestionIndex().text;
         mainEl.appendChild(questionEl);
 
 
-        // create choice buttons
+        // CREATE CHOICE BUTTONS
         var choices = quiz.getQuestionIndex().choices;
         for (var i = 0; i < choices.length; i++) {
             var choiceEl = document.createElement("button");
@@ -88,16 +87,16 @@ function populate() {
             choiceEl.appendChild(spanEl);
             var element = document.getElementById("choice" + i);
             element.innerHTML = choices[i];
-            guess("btn" + i, choices[i]);
+            selection("btn" + i, choices[i]);
         }
-        showProgress();
+        questionNumber();
     }
 };
-
-function guess(id, guess) {
+// CAPTURE USER SELECTION
+function selection(id, selection) {
     var button = document.getElementById(id);
     button.onclick = function () {
-        quiz.guess(guess);
+        quiz.selection(selection);
         // after choosing, card is erased 
         var questionEl = document.querySelector(".question");
         mainEl.removeChild(questionEl);
@@ -109,18 +108,18 @@ function guess(id, guess) {
         mainEl.removeChild(choiceEl);
         var choiceEl = document.querySelector("button");
         mainEl.removeChild(choiceEl);
-        populate();
+        generate();
     }
 };
-
-function showProgress() {
+// DISPLAY CURRENT QUESTION NUMBER
+function questionNumber() {
     var currentQuestionNumber = quiz.questionIndex + 1;
     var element = document.getElementById("progress");
     element.innerHTML = "Question " + currentQuestionNumber + " of " + quiz.questions.length;
     
 };
 
-// Get initials and score and send to local storage
+
 var scores = [];
 var submitButton = document.querySelector("#submit");
 var scoreListEl = document.querySelector("#score-list");
@@ -133,7 +132,6 @@ var gameOver = function () {
     if (seconds < 0) {
         seconds = 0;
     }
-    // var score = quiz.score
     var footer = document.querySelector('#progress');
     footer.innerHTML = "";
     var scoreCard = document.createElement("article");
@@ -191,6 +189,6 @@ var questions = [
     new Question("Arrays in JavaScript can be used to store __________.", ["numbers and strings", "other arrays", "booleans", "all of the above"], "all of the above")
 ];
 
-var quiz = new Quiz(questions);
+var quiz = new Game(questions);
 
 startButton.addEventListener("click", startQuiz);

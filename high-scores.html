@@ -34,16 +34,12 @@
         function printHighScores() {
 
             var highScores = JSON.parse(window.localStorage.getItem("highscores")) || [];
-            // console.log(highScores);
             var initialsJSON = JSON.stringify(highScores[initials]);
-            // console.log(initialsJSON);
-            // console.log(highScores);
-            console.log(typeof initials);
             highScores.sort(function (a, b) {
                 return b.score - a.score;
 
             })
-console.log(highScores);
+
             for (var i = 0; i < highScores.length && i < 10; i++) {
                 var playerScoreEl = document.createElement('li');
                 playerScoreEl.className = "playerData";
